@@ -1,0 +1,10 @@
+Package: snap-l10n
+Version: 0.1.0-1
+Section: devel
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.10), python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1
+Maintainer: Daniel Nylander <daniel@danielnylander.se>
+Homepage: https://github.com/yeager/snap-l10n
+Description: View snap package translation status
+ GTK4/Adwaita app showing translation status of installed snap packages.
