@@ -133,6 +133,14 @@ class SnapL10nWindow(Adw.ApplicationWindow):
 
         self._snaps = []
         self._current_filter = self.FILTER_ALL
+        self._current_language = None  # None = all languages
+
+        # Detect system language
+        try:
+            sys_locale = locale.getlocale()[0] or ""
+            self._system_lang = sys_locale.split("_")[0] if sys_locale else ""
+        except Exception:
+            self._system_lang = ""
 
         # Header bar
         header = Adw.HeaderBar()
@@ -146,6 +154,13 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         self._filter_dropdown = Gtk.DropDown(model=filter_model)
         self._filter_dropdown.connect("notify::selected", self._on_filter_changed)
         header.pack_start(self._filter_dropdown)
+
+        # Language picker dropdown
+        self._lang_model = Gtk.StringList.new([_("All languages")])
+        self._lang_dropdown = Gtk.DropDown(model=self._lang_model)
+        self._lang_dropdown.set_tooltip_text(_("Filter by language"))
+        self._lang_dropdown.connect("notify::selected", self._on_language_changed)
+        header.pack_start(self._lang_dropdown)
 
         # Refresh button
         refresh_btn = Gtk.Button(icon_name="view-refresh-symbolic")
@@ -193,8 +208,33 @@ class SnapL10nWindow(Adw.ApplicationWindow):
             self._status_page.set_description(str(e))
             self._status_page.set_icon_name("dialog-error-symbolic")
             return False
+        self._update_language_list()
         self._populate()
         return False
+
+    def _update_language_list(self):
+        """Collect all languages from snaps and populate the language dropdown."""
+        all_langs = set()
+        for info in self._snaps:
+            all_langs.update(info.get("languages", []))
+            dl = info.get("desktop_l10n")
+            if dl:
+                all_langs.update(dl)
+
+        self._all_languages = sorted(all_langs)
+
+        # Rebuild model
+        self._lang_model.splice(0, self._lang_model.get_n_items(), [])
+        self._lang_model.append(_("All languages"))
+        for lang in self._all_languages:
+            self._lang_model.append(lang)
+
+        # Auto-select system language if available
+        if self._system_lang and self._system_lang in self._all_languages:
+            idx = self._all_languages.index(self._system_lang) + 1  # +1 for "All"
+            self._lang_dropdown.set_selected(idx)
+        else:
+            self._lang_dropdown.set_selected(0)
 
     def _populate(self):
         # Clear
@@ -210,6 +250,14 @@ class SnapL10nWindow(Adw.ApplicationWindow):
                 continue
             if self._current_filter == self.FILTER_PARTIAL and info["status"] != "partial":
                 continue
+            # Language filter
+            if self._current_language is not None:
+                snap_langs = set(info.get("languages", []))
+                dl = info.get("desktop_l10n")
+                if dl:
+                    snap_langs.update(dl)
+                if self._current_language not in snap_langs:
+                    continue
             self._listbox.append(SnapRow(info))
             count += 1
 
@@ -225,6 +273,14 @@ class SnapL10nWindow(Adw.ApplicationWindow):
 
     def _on_filter_changed(self, dropdown, _param):
         self._current_filter = dropdown.get_selected()
+        self._populate()
+
+    def _on_language_changed(self, dropdown, _param):
+        idx = dropdown.get_selected()
+        if idx == 0:
+            self._current_language = None
+        else:
+            self._current_language = self._all_languages[idx - 1]
         self._populate()
 
     def _on_refresh(self, _btn):
