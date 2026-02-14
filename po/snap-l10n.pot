@@ -87,3 +87,7 @@ msgstr ""
 #: src/snap_l10n/main.py:219
 msgid "No snaps match the current filter."
 msgstr ""
+
+#: desktop file
+msgid "View snap package translation status"
+msgstr ""
