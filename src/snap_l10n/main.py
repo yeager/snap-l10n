@@ -319,7 +319,7 @@ class SnapL10nApp(Adw.Application):
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
             application_name=_("Snap Translation Status"),
-            application_icon="preferences-desktop-locale-symbolic",
+            application_icon="snap-l10n",
             developer_name="Daniel Nylander",
             version="0.1.0",
             developers=["Daniel Nylander <daniel@danielnylander.se>"],
@@ -327,6 +327,8 @@ class SnapL10nApp(Adw.Application):
             license_type=Gtk.License.GPL_3_0,
             website="https://github.com/yeager/snap-l10n",
             issue_url="https://github.com/yeager/snap-l10n/issues",
+            comments=_("A localization tool by Daniel Nylander"),
+            translator_credits=_("Translate this app: https://app.transifex.com/linguaedit/snap-l10n/"),
         )
         about.present()
 

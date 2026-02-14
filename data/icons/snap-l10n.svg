@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs><style>.c{fill:#82B632;}</style></defs>
+  <rect class="c" width="128" height="128" rx="16"/>
+  <rect x="32" y="28" width="64" height="72" rx="8" fill="none" stroke="#fff" stroke-width="5"/>
+  <line x1="64" y1="28" x2="64" y2="100" stroke="#fff" stroke-width="3"/>
+  <line x1="32" y1="64" x2="96" y2="64" stroke="#fff" stroke-width="3"/>
+  <text x="48" y="54" font-family="sans-serif" font-size="18" font-weight="bold" fill="#fff">A</text>
+  <text x="70" y="54" font-family="sans-serif" font-size="18" font-weight="bold" fill="#fff">文</text>
+</svg>
