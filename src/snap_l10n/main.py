@@ -328,7 +328,7 @@ class SnapL10nApp(Adw.Application):
             website="https://github.com/yeager/snap-l10n",
             issue_url="https://github.com/yeager/snap-l10n/issues",
             comments=_("A localization tool by Daniel Nylander"),
-            translator_credits=_("Translate this app: https://app.transifex.com/linguaedit/snap-l10n/"),
+            translator_credits=_("Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"),
         )
         about.present()
 
