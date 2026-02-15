@@ -2,10 +2,10 @@
 # Copyright (C) YEAR Daniel Nylander
 # This file is distributed under the same license as the snap-l10n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2026-02-15 10:24+0100\n"
 "PO-Revision-Date: 2026-02-14 09:50+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
-"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/"
-"304768/sv/)\n"
-"Language: sv\n"
+"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304768/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/snap_l10n/main.py:81
@@ -83,7 +82,7 @@ msgstr "Filtrera efter språk"
 
 #: src/snap_l10n/main.py:187
 msgid "Toggle heatmap view"
-msgstr ""
+msgstr "Växla värmekarta"
 
 #: src/snap_l10n/main.py:193
 msgid "Refresh"
@@ -110,6 +109,7 @@ msgid "A localization tool by Daniel Nylander"
 msgstr "Ett lokaliseringsverktyg av Daniel Nylander"
 
 #: src/snap_l10n/main.py:426
-msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
+msgid ""
+"Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
 "Översätt denna app: https://app.transifex.com/danielnylander/snap-l10n/"

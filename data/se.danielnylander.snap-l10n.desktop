@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Snap Translation Status
-Name[sv]=Översättningsstatus för snap
 Comment=View snap package translation status
 Exec=snap-l10n
 Icon=snap-l10n
