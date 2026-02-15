@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Daniel Nylander
+# This file is distributed under the same license as the snap-l10n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 09:47+0100\n"
+"Project-Id-Version: snap-l10n\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-14 20:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,11 +48,11 @@ msgstr ""
 msgid "Fully translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:100 src/snap_l10n/main.py:144
+#: src/snap_l10n/main.py:100 src/snap_l10n/main.py:152
 msgid "Partially translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:101 src/snap_l10n/main.py:143
+#: src/snap_l10n/main.py:101 src/snap_l10n/main.py:151
 msgid "No translations"
 msgstr ""
 
@@ -60,34 +60,46 @@ msgstr ""
 msgid "Open in Snap Store"
 msgstr ""
 
-#: src/snap_l10n/main.py:131 src/snap_l10n/main.py:265
+#: src/snap_l10n/main.py:131 src/snap_l10n/main.py:321
 msgid "Snap Translation Status"
 msgstr ""
 
-#: src/snap_l10n/main.py:142
+#: src/snap_l10n/main.py:150
 msgid "All snaps"
 msgstr ""
 
-#: src/snap_l10n/main.py:152
+#: src/snap_l10n/main.py:159 src/snap_l10n/main.py:228
+msgid "All languages"
+msgstr ""
+
+#: src/snap_l10n/main.py:161
+msgid "Filter by language"
+msgstr ""
+
+#: src/snap_l10n/main.py:167
 msgid "Refresh"
 msgstr ""
 
-#: src/snap_l10n/main.py:161 src/snap_l10n/main.py:232
+#: src/snap_l10n/main.py:176 src/snap_l10n/main.py:288
 msgid "Loading…"
 msgstr ""
 
-#: src/snap_l10n/main.py:192
+#: src/snap_l10n/main.py:207
 msgid "Error"
 msgstr ""
 
-#: src/snap_l10n/main.py:217
+#: src/snap_l10n/main.py:265
 msgid "No snaps found"
 msgstr ""
 
-#: src/snap_l10n/main.py:219
+#: src/snap_l10n/main.py:267
 msgid "No snaps match the current filter."
 msgstr ""
 
-#: desktop file
-msgid "View snap package translation status"
+#: src/snap_l10n/main.py:330
+msgid "A localization tool by Daniel Nylander"
+msgstr ""
+
+#: src/snap_l10n/main.py:331
+msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
