@@ -241,6 +241,13 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         header.pack_start(self._heatmap_btn)
 
         # Refresh button
+        # Notifications toggle
+        notif_btn = Gtk.ToggleButton(icon_name="preferences-system-notifications-symbolic")
+        notif_btn.set_tooltip_text(_("Toggle notifications"))
+        notif_btn.set_active(_load_notify_config().get("enabled", False))
+        notif_btn.connect("toggled", self._on_notif_toggled)
+        header.pack_end(notif_btn)
+
         refresh_btn = Gtk.Button(icon_name="view-refresh-symbolic")
         refresh_btn.set_tooltip_text(_("Refresh"))
         refresh_btn.connect("clicked", self._on_refresh)
@@ -437,6 +444,11 @@ class SnapL10nWindow(Adw.ApplicationWindow):
             self._current_language = self._all_languages[idx - 1]
         self._populate()
 
+    def _on_notif_toggled(self, btn):
+        config = _load_notify_config()
+        config["enabled"] = btn.get_active()
+        _save_notify_config(config)
+
     def _on_refresh(self, _btn):
         self._stack.set_visible_child_name("loading")
         self._status_page.set_title(_("Loading…"))
@@ -487,6 +499,8 @@ class SnapL10nApp(Adw.Application):
             comments=_("A localization tool by Daniel Nylander"),
             translator_credits=_("Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"),
         )
+        about.set_debug_info(_get_system_info())
+        about.set_debug_info_filename("snap-l10n-debug.txt")
         about.present()
 
 
