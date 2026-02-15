@@ -6,3 +6,9 @@ file_filter = po/<lang>.po
 source_file = po/snap-l10n.pot
 source_lang = en
 type = PO
+
+[o:danielnylander:p:snap-l10n:r:snap-l10n-man]
+file_filter  = po/man/<lang>.po
+source_file  = po/man/snap-l10n.1.pot
+source_lang  = en
+type         = PO
