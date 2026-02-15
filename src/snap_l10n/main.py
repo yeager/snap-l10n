@@ -53,7 +53,6 @@ _SNAP_STATUS_PCT = {"full": "100%", "partial": "~50%", "none": "0%"}
 import json as _json
 import platform as _platform
 from pathlib import Path as _Path
-from datetime import datetime as _dt_now
 
 _NOTIFY_APP = "snap-l10n"
 
