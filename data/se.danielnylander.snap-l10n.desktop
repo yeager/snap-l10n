@@ -1,8 +1,7 @@
 [Desktop Entry]
 Name=Snap Translation Status
-Name[sv]=Snap översättningsstatus
+Name[sv]=Översättningsstatus för snap
 Comment=View snap package translation status
-Comment[sv]=Visa översättningsstatus för snap-paket
 Exec=snap-l10n
 Icon=snap-l10n
 Terminal=false
