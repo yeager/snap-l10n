@@ -1,6 +1,8 @@
-# snap-l10n
+# Snap Translation Status
 
-GTK4/Adwaita app showing translation status of installed snap packages.
+A GTK4/Adwaita application for viewing translation status of installed Snap packages.
+
+![Screenshot](data/screenshots/screenshot-01.png)
 
 ## Features
 
@@ -12,9 +14,31 @@ GTK4/Adwaita app showing translation status of installed snap packages.
 - Filter: all/untranslated/partial
 - Link to snap store page
 
-## License
+## Installation
 
-GPL-3.0-or-later — Daniel Nylander <daniel@danielnylander.se>
+### Debian/Ubuntu
+
+```bash
+# Add repository
+curl -fsSL https://yeager.github.io/debian-repo/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/yeager-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/yeager-archive-keyring.gpg] https://yeager.github.io/debian-repo stable main" | sudo tee /etc/apt/sources.list.d/yeager.list
+sudo apt update
+sudo apt install snap-l10n
+```
+
+### Fedora/RHEL
+
+```bash
+sudo dnf config-manager --add-repo https://yeager.github.io/rpm-repo/yeager.repo
+sudo dnf install snap-l10n
+```
+
+### From source
+
+```bash
+pip install .
+snap-l10n
+```
 
 ## 🌍 Contributing Translations
 
@@ -36,3 +60,7 @@ Arabic, Czech, Danish, German, Spanish, Finnish, French, Italian, Japanese, Kore
 - Translations are pulled back and included in releases
 
 New language? Open an [issue](https://github.com/yeager/snap-l10n/issues) and we'll add it!
+
+## License
+
+GPL-3.0-or-later — Daniel Nylander <daniel@danielnylander.se>
