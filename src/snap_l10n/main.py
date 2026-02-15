@@ -422,6 +422,7 @@ class SnapL10nApp(Adw.Application):
             license_type=Gtk.License.GPL_3_0,
             website="https://github.com/yeager/snap-l10n",
             issue_url="https://github.com/yeager/snap-l10n/issues",
+            translate_url="https://app.transifex.com/danielnylander/snap-l10n/",
             comments=_("A localization tool by Daniel Nylander"),
             translator_credits=_("Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"),
         )
