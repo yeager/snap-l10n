@@ -4,9 +4,11 @@
 
 """Snap Translation Status — main entry point."""
 
+import csv
 import sys
 import locale
 import gettext
+import json
 
 import gi
 gi.require_version("Gtk", "4.0")
@@ -253,6 +255,12 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         refresh_btn.connect("clicked", self._on_refresh)
         header.pack_end(refresh_btn)
 
+        # Export button
+        export_btn = Gtk.Button(icon_name="document-save-symbolic",
+                                tooltip_text=_("Export data"))
+        export_btn.connect("clicked", self._on_export_clicked)
+        header.pack_end(export_btn)
+
         # Theme toggle
         self._theme_btn = Gtk.Button(icon_name="weather-clear-night-symbolic",
                                      tooltip_text="Toggle dark/light theme")
@@ -463,6 +471,45 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         config["enabled"] = btn.get_active()
         _save_notify_config(config)
 
+    def _on_export_clicked(self, *_args):
+        dialog = Adw.MessageDialog(transient_for=self,
+                                   heading=_("Export Data"),
+                                   body=_("Choose export format:"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("csv", "CSV")
+        dialog.add_response("json", "JSON")
+        dialog.set_response_appearance("csv", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", self._on_export_format_chosen)
+        dialog.present()
+
+    def _on_export_format_chosen(self, dialog, response):
+        if response not in ("csv", "json"):
+            return
+        self._export_fmt = response
+        fd = Gtk.FileDialog()
+        fd.set_initial_name(f"snap-l10n.{response}")
+        fd.save(self, None, self._on_export_save)
+
+    def _on_export_save(self, dialog, result):
+        try:
+            path = dialog.save_finish(result).get_path()
+        except Exception:
+            return
+        data = [{"name": s.get("name", ""), "status": s.get("status", ""),
+                 "languages": len(s.get("languages", [])),
+                 "desktop_l10n": s.get("desktop_l10n", False)}
+                for s in self._snaps]
+        if not data:
+            return
+        if self._export_fmt == "csv":
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=data[0].keys())
+                w.writeheader()
+                w.writerows(data)
+        else:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
     def _on_refresh(self, _btn):
         self._update_status_bar()
         self._stack.set_visible_child_name("loading")
@@ -511,9 +558,11 @@ class SnapL10nApp(Adw.Application):
         self.set_accels_for_action("app.quit", ["<Control>q"])
         self.set_accels_for_action("app.refresh", ["F5"])
         self.set_accels_for_action("app.shortcuts", ["<Control>slash"])
+        self.set_accels_for_action("app.export", ["<Control>e"])
         for n, cb in [("quit", lambda *_: self.quit()),
                       ("refresh", lambda *_: self._do_refresh()),
-                      ("shortcuts", self._show_shortcuts_window)]:
+                      ("shortcuts", self._show_shortcuts_window),
+                      ("export", lambda *_: self.get_active_window() and self.get_active_window()._on_export_clicked())]:
             a = Gio.SimpleAction.new(n, None); a.connect("activate", cb); self.add_action(a)
 
     def _do_refresh(self):
