@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: snap-l10n\n"
 "Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-14 20:01+0100\n"
+"POT-Creation-Date: 2026-02-15 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,89 +17,93 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/snap_l10n/main.py:64
+#: src/snap_l10n/main.py:81
 #, python-brace-format
 msgid "Version: {version} · Publisher: {publisher}"
 msgstr ""
 
-#: src/snap_l10n/main.py:66
+#: src/snap_l10n/main.py:83
 msgid "unknown"
 msgstr ""
 
-#: src/snap_l10n/main.py:75
+#: src/snap_l10n/main.py:92
 #, python-brace-format
 msgid "Languages: {langs}"
 msgstr ""
 
-#: src/snap_l10n/main.py:77
+#: src/snap_l10n/main.py:94
 msgid "No translations found"
 msgstr ""
 
-#: src/snap_l10n/main.py:88
+#: src/snap_l10n/main.py:105
 #, python-brace-format
 msgid "Desktop file translated: {langs}"
 msgstr ""
 
-#: src/snap_l10n/main.py:92
+#: src/snap_l10n/main.py:109
 msgid "Desktop file: not translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:99
+#: src/snap_l10n/main.py:116
 msgid "Fully translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:100 src/snap_l10n/main.py:152
+#: src/snap_l10n/main.py:117 src/snap_l10n/main.py:172
 msgid "Partially translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:101 src/snap_l10n/main.py:151
+#: src/snap_l10n/main.py:118 src/snap_l10n/main.py:171
 msgid "No translations"
 msgstr ""
 
-#: src/snap_l10n/main.py:113
+#: src/snap_l10n/main.py:130
 msgid "Open in Snap Store"
 msgstr ""
 
-#: src/snap_l10n/main.py:131 src/snap_l10n/main.py:321
+#: src/snap_l10n/main.py:148 src/snap_l10n/main.py:416
 msgid "Snap Translation Status"
 msgstr ""
 
-#: src/snap_l10n/main.py:150
+#: src/snap_l10n/main.py:170
 msgid "All snaps"
 msgstr ""
 
-#: src/snap_l10n/main.py:159 src/snap_l10n/main.py:228
+#: src/snap_l10n/main.py:179 src/snap_l10n/main.py:270
 msgid "All languages"
 msgstr ""
 
-#: src/snap_l10n/main.py:161
+#: src/snap_l10n/main.py:181
 msgid "Filter by language"
 msgstr ""
 
-#: src/snap_l10n/main.py:167
+#: src/snap_l10n/main.py:187
+msgid "Toggle heatmap view"
+msgstr ""
+
+#: src/snap_l10n/main.py:193
 msgid "Refresh"
 msgstr ""
 
-#: src/snap_l10n/main.py:176 src/snap_l10n/main.py:288
+#: src/snap_l10n/main.py:202 src/snap_l10n/main.py:383
 msgid "Loading…"
 msgstr ""
 
-#: src/snap_l10n/main.py:207
+#: src/snap_l10n/main.py:249
 msgid "Error"
 msgstr ""
 
-#: src/snap_l10n/main.py:265
+#: src/snap_l10n/main.py:353
 msgid "No snaps found"
 msgstr ""
 
-#: src/snap_l10n/main.py:267
+#: src/snap_l10n/main.py:355
 msgid "No snaps match the current filter."
 msgstr ""
 
-#: src/snap_l10n/main.py:330
+#: src/snap_l10n/main.py:425
 msgid "A localization tool by Daniel Nylander"
 msgstr ""
 
-#: src/snap_l10n/main.py:331
+#: src/snap_l10n/main.py:426
 msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
