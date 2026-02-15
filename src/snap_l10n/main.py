@@ -11,7 +11,7 @@ import gettext
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib, Pango  # noqa: E402
+from gi.repository import Gtk, Adw, Gio, GLib, Pango, Gdk  # noqa: E402
 
 from snap_l10n.snapd import get_installed_snaps, get_snap_l10n_info  # noqa: E402
 
@@ -23,6 +23,23 @@ locale.textdomain(GETTEXT_DOMAIN)
 gettext.bindtextdomain(GETTEXT_DOMAIN, "/usr/share/locale")
 gettext.textdomain(GETTEXT_DOMAIN)
 _ = gettext.gettext
+
+
+def _setup_heatmap_css():
+    css = b"""
+    .heatmap-green { background-color: #26a269; color: white; border-radius: 8px; }
+    .heatmap-yellow { background-color: #e5a50a; color: white; border-radius: 8px; }
+    .heatmap-red { background-color: #c01c28; color: white; border-radius: 8px; }
+    .heatmap-gray { background-color: #77767b; color: white; border-radius: 8px; }
+    """
+    provider = Gtk.CssProvider()
+    provider.load_from_data(css)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
+
+_SNAP_STATUS_CSS = {"full": "heatmap-green", "partial": "heatmap-yellow", "none": "heatmap-red"}
+_SNAP_STATUS_PCT = {"full": "100%", "partial": "~50%", "none": "0%"}
 
 
 class SnapRow(Gtk.ListBoxRow):
@@ -134,6 +151,9 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         self._snaps = []
         self._current_filter = self.FILTER_ALL
         self._current_language = None  # None = all languages
+        self._heatmap_mode = False
+
+        _setup_heatmap_css()
 
         # Detect system language
         try:
@@ -162,6 +182,12 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         self._lang_dropdown.connect("notify::selected", self._on_language_changed)
         header.pack_start(self._lang_dropdown)
 
+        # Heatmap toggle
+        self._heatmap_btn = Gtk.ToggleButton(icon_name="view-grid-symbolic")
+        self._heatmap_btn.set_tooltip_text(_("Toggle heatmap view"))
+        self._heatmap_btn.connect("toggled", self._on_heatmap_toggled)
+        header.pack_start(self._heatmap_btn)
+
         # Refresh button
         refresh_btn = Gtk.Button(icon_name="view-refresh-symbolic")
         refresh_btn.set_tooltip_text(_("Refresh"))
@@ -187,9 +213,25 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         self._listbox.set_margin_end(12)
         self._scrolled.set_child(self._listbox)
 
+        # Heatmap view
+        heatmap_scroll = Gtk.ScrolledWindow(vexpand=True)
+        self._heatmap_flow = Gtk.FlowBox()
+        self._heatmap_flow.set_selection_mode(Gtk.SelectionMode.NONE)
+        self._heatmap_flow.set_homogeneous(True)
+        self._heatmap_flow.set_min_children_per_line(3)
+        self._heatmap_flow.set_max_children_per_line(8)
+        self._heatmap_flow.set_column_spacing(4)
+        self._heatmap_flow.set_row_spacing(4)
+        self._heatmap_flow.set_margin_start(12)
+        self._heatmap_flow.set_margin_end(12)
+        self._heatmap_flow.set_margin_top(12)
+        self._heatmap_flow.set_margin_bottom(12)
+        heatmap_scroll.set_child(self._heatmap_flow)
+
         self._stack = Gtk.Stack()
         self._stack.add_named(self._status_page, "loading")
         self._stack.add_named(self._scrolled, "list")
+        self._stack.add_named(heatmap_scroll, "heatmap")
         self._stack.set_visible_child_name("loading")
 
         toolbar_view.set_content(self._stack)
@@ -261,15 +303,68 @@ class SnapL10nWindow(Adw.ApplicationWindow):
             self._listbox.append(SnapRow(info))
             count += 1
 
-        if count == 0:
+        # Rebuild heatmap
+        while True:
+            child = self._heatmap_flow.get_first_child()
+            if child is None:
+                break
+            self._heatmap_flow.remove(child)
+        heatmap_count = 0
+        for info in self._snaps:
+            if self._current_filter == self.FILTER_NONE and info["status"] != "none":
+                continue
+            if self._current_filter == self.FILTER_PARTIAL and info["status"] != "partial":
+                continue
+            if self._current_language is not None:
+                snap_langs = set(info.get("languages", []))
+                dl = info.get("desktop_l10n")
+                if dl:
+                    snap_langs.update(dl)
+                if self._current_language not in snap_langs:
+                    continue
+            status = info["status"]
+            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+            box.set_size_request(140, 64)
+            box.add_css_class(_SNAP_STATUS_CSS.get(status, "heatmap-gray"))
+            box.set_margin_start(4)
+            box.set_margin_end(4)
+            box.set_margin_top(4)
+            box.set_margin_bottom(4)
+            lbl = Gtk.Label(label=info["name"])
+            lbl.set_ellipsize(Pango.EllipsizeMode.END)
+            lbl.set_max_width_chars(18)
+            lbl.set_margin_top(6)
+            lbl.set_margin_start(6)
+            lbl.set_margin_end(6)
+            box.append(lbl)
+            st_lbl = Gtk.Label(label=_SNAP_STATUS_PCT.get(status, "?"))
+            st_lbl.set_margin_bottom(6)
+            box.append(st_lbl)
+            n_langs = len(info.get("languages", []))
+            box.set_tooltip_text(f"{info['name']}: {n_langs} languages")
+            gesture = Gtk.GestureClick()
+            gesture.connect("released", lambda g, n, x, y, name=info["name"]: Gio.AppInfo.launch_default_for_uri(f"https://snapcraft.io/{name}", None))
+            box.add_controller(gesture)
+            box.set_cursor(Gdk.Cursor.new_from_name("pointer"))
+            self._heatmap_flow.append(box)
+            heatmap_count += 1
+
+        if count == 0 and heatmap_count == 0:
             self._status_page.set_title(_("No snaps found"))
             self._status_page.set_description(
                 _("No snaps match the current filter.")
             )
             self._status_page.set_icon_name("edit-find-symbolic")
             self._stack.set_visible_child_name("loading")
+        elif self._heatmap_mode:
+            self._stack.set_visible_child_name("heatmap")
         else:
             self._stack.set_visible_child_name("list")
+
+    def _on_heatmap_toggled(self, btn):
+        self._heatmap_mode = btn.get_active()
+        if self._snaps:
+            self._populate()
 
     def _on_filter_changed(self, dropdown, _param):
         self._current_filter = dropdown.get_selected()
