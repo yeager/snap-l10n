@@ -107,3 +107,11 @@ msgstr ""
 #: src/snap_l10n/main.py:426
 msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
+
+#: snap-l10n/data/se.danielnylander.snap-l10n.desktop.in
+msgid "View snap package translation status"
+msgstr ""
+
+#: snap-l10n/data/se.danielnylander.snap-l10n.desktop.in
+msgid "snap;translation;l10n;localization;"
+msgstr ""

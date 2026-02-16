@@ -6,3 +6,4 @@ Icon=snap-l10n
 Terminal=false
 Type=Application
 Categories=Development;GTK;
+_Keywords=snap;translation;l10n;localization;
