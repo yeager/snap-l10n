@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-15 15:38+0100\n"
+"POT-Creation-Date: 2026-02-16 08:44+0000\n"
 "PO-Revision-Date: 2026-02-15 14:38+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
 "Language-Team: Swedish (https://app.transifex.com/danielnylander/"
@@ -25,7 +25,7 @@ msgstr ""
 #: data/man/snap-l10n.1:1
 #, no-wrap
 msgid "SNAP-L10N"
-msgstr ""
+msgstr "SNAP-L10N"
 
 #. type: TH
 #: data/man/snap-l10n.1:1
@@ -43,7 +43,7 @@ msgstr "Daniel Nylander"
 #: data/man/snap-l10n.1:1
 #, no-wrap
 msgid "Snap L10n Manual"
-msgstr ""
+msgstr "Manual för Snap L10n"
 
 #. type: SH
 #: data/man/snap-l10n.1:2
@@ -54,7 +54,7 @@ msgstr "NAMN"
 #. type: Plain text
 #: data/man/snap-l10n.1:4
 msgid "snap-l10n - View snap package translation status"
-msgstr ""
+msgstr "snap-l10n - Visa översättningsstatus för snap-paket"
 
 #. type: SH
 #: data/man/snap-l10n.1:4
@@ -65,7 +65,7 @@ msgstr "SYNOPSIS"
 #. type: Plain text
 #: data/man/snap-l10n.1:6
 msgid "B<snap-l10n>"
-msgstr ""
+msgstr "B<snap-l10n>"
 
 #. type: SH
 #: data/man/snap-l10n.1:6
@@ -82,6 +82,11 @@ msgid ""
 "present and missing languages per snap, provides color-coded status, and "
 "links to the Snap Store."
 msgstr ""
+"B<snap-l10n> är ett GTK4/Adwaita-program för att visa översättningsstatus "
+"för installerade Snap-paket. Det listar installerade snappar med deras "
+"översättningsstatus, frågar snapd API, kontrollerar .desktop-filer för "
+"översättningar, visar befintliga och saknade språk per snap, ger färgkodad "
+"status och länkar till Snap Store."
 
 #. type: SH
 #: data/man/snap-l10n.1:8
@@ -93,70 +98,120 @@ msgstr "FLAGGOR"
 #: data/man/snap-l10n.1:9
 #, no-wrap
 msgid "B<--help>"
-msgstr ""
+msgstr "B<--help>"
 
 #. type: Plain text
 #: data/man/snap-l10n.1:12
 msgid "Show help message and exit."
-msgstr ""
+msgstr "Visa hjälpmeddelande och avsluta."
 
 #. type: SH
 #: data/man/snap-l10n.1:12
+#, no-wrap
+msgid "KEYBOARD SHORTCUTS"
+msgstr ""
+
+#. type: TP
+#: data/man/snap-l10n.1:13
+#, no-wrap
+msgid "B<Ctrl+Q>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/snap-l10n.1:16
+msgid "Quit the application"
+msgstr ""
+
+#. type: TP
+#: data/man/snap-l10n.1:16
+#, no-wrap
+msgid "B<F5>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/snap-l10n.1:19
+msgid "Refresh the current data"
+msgstr ""
+
+#. type: TP
+#: data/man/snap-l10n.1:19
+#, no-wrap
+msgid "B<Ctrl+/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/snap-l10n.1:22
+msgid "Show keyboard shortcuts dialog"
+msgstr ""
+
+#. type: TP
+#: data/man/snap-l10n.1:22
+#, no-wrap
+msgid "B<Ctrl+E>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/snap-l10n.1:25
+msgid "Export current view to CSV or JSON format"
+msgstr ""
+
+#. type: SH
+#: data/man/snap-l10n.1:25
 #, no-wrap
 msgid "FILES"
 msgstr "FILER"
 
 #. type: TP
-#: data/man/snap-l10n.1:13
+#: data/man/snap-l10n.1:26
 #, no-wrap
 msgid "I<~/.config/snap-l10n/>"
-msgstr ""
+msgstr "I<~/.config/snap-l10n/>"
 
 #. type: Plain text
-#: data/man/snap-l10n.1:16
+#: data/man/snap-l10n.1:29
 msgid "Configuration files."
 msgstr "Konfigurationsfiler."
 
 #. type: TP
-#: data/man/snap-l10n.1:16
+#: data/man/snap-l10n.1:29
 #, no-wrap
 msgid "I<~/.cache/snap-l10n/>"
-msgstr ""
+msgstr "I<~/.cache/snap-l10n/>"
 
 #. type: Plain text
-#: data/man/snap-l10n.1:19
+#: data/man/snap-l10n.1:32
 msgid "Cached data."
 msgstr "Cachat data."
 
 #. type: SH
-#: data/man/snap-l10n.1:19
+#: data/man/snap-l10n.1:32
 #, no-wrap
 msgid "BUGS"
 msgstr "BUGGAR"
 
 #. type: Plain text
-#: data/man/snap-l10n.1:21
+#: data/man/snap-l10n.1:34
 msgid "Report bugs at https://github.com/yeager/snap-l10n/issues"
-msgstr ""
+msgstr "Rapportera buggar på https://github.com/yeager/snap-l10n/issues"
 
 #. type: SH
-#: data/man/snap-l10n.1:21
+#: data/man/snap-l10n.1:34
 #, no-wrap
 msgid "AUTHOR"
 msgstr "UPPHOVSPERSON"
 
 #. type: Plain text
-#: data/man/snap-l10n.1:23
+#: data/man/snap-l10n.1:36
 msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
 msgstr "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
 
 #. type: SH
-#: data/man/snap-l10n.1:23
+#: data/man/snap-l10n.1:36
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SE ÄVEN"
 
 #. type: Plain text
-#: data/man/snap-l10n.1:24
+#: data/man/snap-l10n.1:37
 msgid "Project homepage: https://github.com/yeager/snap-l10n"
-msgstr ""
+msgstr "Projektets webbsida: https://github.com/yeager/snap-l10n"
