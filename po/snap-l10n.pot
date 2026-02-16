@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Daniel Nylander
-# This file is distributed under the same license as the snap-l10n package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: snap-l10n\n"
-"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-15 10:24+0100\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-16 17:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,101 +17,122 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/snap_l10n/main.py:81
+#: src/snap_l10n/main.py:135
 #, python-brace-format
 msgid "Version: {version} · Publisher: {publisher}"
 msgstr ""
 
-#: src/snap_l10n/main.py:83
+#: src/snap_l10n/main.py:137
 msgid "unknown"
 msgstr ""
 
-#: src/snap_l10n/main.py:92
+#: src/snap_l10n/main.py:146
 #, python-brace-format
 msgid "Languages: {langs}"
 msgstr ""
 
-#: src/snap_l10n/main.py:94
+#: src/snap_l10n/main.py:148
 msgid "No translations found"
 msgstr ""
 
-#: src/snap_l10n/main.py:105
+#: src/snap_l10n/main.py:159
 #, python-brace-format
 msgid "Desktop file translated: {langs}"
 msgstr ""
 
-#: src/snap_l10n/main.py:109
+#: src/snap_l10n/main.py:163
 msgid "Desktop file: not translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:116
+#: src/snap_l10n/main.py:170
 msgid "Fully translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:117 src/snap_l10n/main.py:172
+#: src/snap_l10n/main.py:171 src/snap_l10n/main.py:226
 msgid "Partially translated"
 msgstr ""
 
-#: src/snap_l10n/main.py:118 src/snap_l10n/main.py:171
+#: src/snap_l10n/main.py:172 src/snap_l10n/main.py:225
 msgid "No translations"
 msgstr ""
 
-#: src/snap_l10n/main.py:130
+#: src/snap_l10n/main.py:184
 msgid "Open in Snap Store"
 msgstr ""
 
-#: src/snap_l10n/main.py:148 src/snap_l10n/main.py:416
+#: src/snap_l10n/main.py:202 src/snap_l10n/main.py:591
 msgid "Snap Translation Status"
 msgstr ""
 
-#: src/snap_l10n/main.py:170
+#: src/snap_l10n/main.py:224
 msgid "All snaps"
 msgstr ""
 
-#: src/snap_l10n/main.py:179 src/snap_l10n/main.py:270
+#: src/snap_l10n/main.py:233 src/snap_l10n/main.py:358
 msgid "All languages"
 msgstr ""
 
-#: src/snap_l10n/main.py:181
+#: src/snap_l10n/main.py:235
 msgid "Filter by language"
 msgstr ""
 
-#: src/snap_l10n/main.py:187
+#: src/snap_l10n/main.py:241
 msgid "Toggle heatmap view"
 msgstr ""
 
-#: src/snap_l10n/main.py:193
+#: src/snap_l10n/main.py:248
+msgid "Toggle notifications"
+msgstr ""
+
+#: src/snap_l10n/main.py:254
 msgid "Refresh"
 msgstr ""
 
-#: src/snap_l10n/main.py:202 src/snap_l10n/main.py:383
+#: src/snap_l10n/main.py:260
+msgid "Export data"
+msgstr ""
+
+#: src/snap_l10n/main.py:275 src/snap_l10n/main.py:516
 msgid "Loading…"
 msgstr ""
 
-#: src/snap_l10n/main.py:249
+#: src/snap_l10n/main.py:330
 msgid "Error"
 msgstr ""
 
-#: src/snap_l10n/main.py:353
+#: src/snap_l10n/main.py:340
+msgid "Snap L10n: Untranslated snaps"
+msgstr ""
+
+#: src/snap_l10n/main.py:341
+#, python-brace-format
+msgid "{count} snaps have no translations"
+msgstr ""
+
+#: src/snap_l10n/main.py:441
 msgid "No snaps found"
 msgstr ""
 
-#: src/snap_l10n/main.py:355
+#: src/snap_l10n/main.py:443
 msgid "No snaps match the current filter."
 msgstr ""
 
-#: src/snap_l10n/main.py:425
+#: src/snap_l10n/main.py:476
+msgid "Export Data"
+msgstr ""
+
+#: src/snap_l10n/main.py:477
+msgid "Choose export format:"
+msgstr ""
+
+#: src/snap_l10n/main.py:478
+msgid "Cancel"
+msgstr ""
+
+#: src/snap_l10n/main.py:601
 msgid "A localization tool by Daniel Nylander"
 msgstr ""
 
-#: src/snap_l10n/main.py:426
+#: src/snap_l10n/main.py:602
 msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
-msgstr ""
-
-#: snap-l10n/data/se.danielnylander.snap-l10n.desktop.in
-msgid "View snap package translation status"
-msgstr ""
-
-#: snap-l10n/data/se.danielnylander.snap-l10n.desktop.in
-msgid "snap;translation;l10n;localization;"
 msgstr ""
