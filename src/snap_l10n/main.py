@@ -587,8 +587,7 @@ class SnapL10nApp(Adw.Application):
         win.present()
 
     def _on_about(self, _action, _param):
-        about = Adw.AboutWindow(
-            transient_for=self.props.active_window,
+        about = Adw.AboutDialog(
             application_name=_("Snap Translation Status"),
             application_icon="snap-l10n",
             developer_name="Daniel Nylander",
@@ -604,7 +603,7 @@ class SnapL10nApp(Adw.Application):
         )
         about.set_debug_info(_get_system_info())
         about.set_debug_info_filename("snap-l10n-debug.txt")
-        about.present()
+        about.present(self.props.active_window)
 
 
 def main():
