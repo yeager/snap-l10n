@@ -449,6 +449,8 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         else:
             self._stack.set_visible_child_name("list")
 
+        self._update_status_bar()
+
     def _on_heatmap_toggled(self, btn):
         self._heatmap_mode = btn.get_active()
         if self._snaps:
@@ -511,7 +513,6 @@ class SnapL10nWindow(Adw.ApplicationWindow):
                 json.dump(data, f, ensure_ascii=False, indent=2)
 
     def _on_refresh(self, _btn):
-        self._update_status_bar()
         self._stack.set_visible_child_name("loading")
         self._status_page.set_title(_("Loading…"))
         self._status_page.set_icon_name("emblem-synchronizing-symbolic")
@@ -530,7 +531,21 @@ class SnapL10nWindow(Adw.ApplicationWindow):
             self._theme_btn.set_icon_name("weather-clear-symbolic")
 
     def _update_status_bar(self):
-        self._status_bar.set_text("Last updated: " + _dt_now.now().strftime("%Y-%m-%d %H:%M"))
+        from datetime import datetime
+        total = len(self._snaps)
+        translated = sum(1 for s in self._snaps if s["status"] != "none")
+        filter_names = {
+            self.FILTER_ALL: _("All snaps"),
+            self.FILTER_NONE: _("No translations"),
+            self.FILTER_PARTIAL: _("Partially translated"),
+        }
+        filter_text = filter_names.get(self._current_filter, "")
+        lang_text = self._current_language or _("All languages")
+        ts = datetime.now().strftime("%H:%M:%S")
+        self._status_bar.set_text(
+            _("{total} snaps · {translated} translated · {filter} · {lang} · {ts}").format(
+                total=total, translated=translated, filter=filter_text, lang=lang_text, ts=ts)
+        )
 
 
 class SnapL10nApp(Adw.Application):

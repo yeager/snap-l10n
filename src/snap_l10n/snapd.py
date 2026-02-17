@@ -119,9 +119,9 @@ def get_snap_l10n_info(snap: dict) -> dict:
 
     publisher = snap.get("publisher", {})
     if isinstance(publisher, dict):
-        publisher_name = publisher.get("display-name", publisher.get("username", ""))
+        publisher_name = publisher.get("display-name") or publisher.get("username") or ""
     else:
-        publisher_name = str(publisher)
+        publisher_name = str(publisher) if publisher else ""
 
     return {
         "name": name,
