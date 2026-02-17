@@ -2,7 +2,7 @@
 
 ## Screenshot
 
-![Ubuntu L10n](screenshots/main.png)
+![Snap L10n](screenshots/main.png)
 
 A GTK4/Adwaita application for viewing translation status of installed Snap packages.
 
