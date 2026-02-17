@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Daniel Nylander
+# This file is distributed under the same license as the snap-l10n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 17:16+0100\n"
+"Project-Id-Version: snap-l10n\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-17 15:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,10 +49,12 @@ msgid "Fully translated"
 msgstr ""
 
 #: src/snap_l10n/main.py:171 src/snap_l10n/main.py:226
+#: src/snap_l10n/main.py:540
 msgid "Partially translated"
 msgstr ""
 
 #: src/snap_l10n/main.py:172 src/snap_l10n/main.py:225
+#: src/snap_l10n/main.py:539
 msgid "No translations"
 msgstr ""
 
@@ -60,15 +62,16 @@ msgstr ""
 msgid "Open in Snap Store"
 msgstr ""
 
-#: src/snap_l10n/main.py:202 src/snap_l10n/main.py:591
+#: src/snap_l10n/main.py:202 src/snap_l10n/main.py:606
 msgid "Snap Translation Status"
 msgstr ""
 
-#: src/snap_l10n/main.py:224
+#: src/snap_l10n/main.py:224 src/snap_l10n/main.py:538
 msgid "All snaps"
 msgstr ""
 
 #: src/snap_l10n/main.py:233 src/snap_l10n/main.py:358
+#: src/snap_l10n/main.py:543
 msgid "All languages"
 msgstr ""
 
@@ -92,7 +95,7 @@ msgstr ""
 msgid "Export data"
 msgstr ""
 
-#: src/snap_l10n/main.py:275 src/snap_l10n/main.py:516
+#: src/snap_l10n/main.py:275 src/snap_l10n/main.py:517
 msgid "Loading…"
 msgstr ""
 
@@ -117,22 +120,27 @@ msgstr ""
 msgid "No snaps match the current filter."
 msgstr ""
 
-#: src/snap_l10n/main.py:476
+#: src/snap_l10n/main.py:478
 msgid "Export Data"
 msgstr ""
 
-#: src/snap_l10n/main.py:477
+#: src/snap_l10n/main.py:479
 msgid "Choose export format:"
 msgstr ""
 
-#: src/snap_l10n/main.py:478
+#: src/snap_l10n/main.py:480
 msgid "Cancel"
 msgstr ""
 
-#: src/snap_l10n/main.py:601
+#: src/snap_l10n/main.py:546
+#, python-brace-format
+msgid "{total} snaps · {translated} translated · {filter} · {lang} · {ts}"
+msgstr ""
+
+#: src/snap_l10n/main.py:616
 msgid "A localization tool by Daniel Nylander"
 msgstr ""
 
-#: src/snap_l10n/main.py:602
+#: src/snap_l10n/main.py:617
 msgid "Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
