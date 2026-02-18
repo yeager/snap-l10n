@@ -19,77 +19,68 @@ jobs:
 
       - name: Get version
         id: version
-        run: echo "version=$(grep -oP '__version__ = "\K[^"]+' src/snap_l10n/__init__.py)" >> $GITHUB_OUTPUT
+        run: echo "version=$(grep -oP '__version__ = \"\K[^\"]+' src/snap_l10n/__init__.py)" >> $GITHUB_OUTPUT
 
       - name: Setup RPM build
         run: |
           mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
           VERSION=${{ steps.version.outputs.version }}
           DIR=snap-l10n-$VERSION
-          mkdir -p $DIR/src/snap_l10n
-          mkdir -p $DIR/data/icons $DIR/data/man
-          cp src/snap_l10n/*.py $DIR/src/snap_l10n/
-          cp data/se.danielnylander.snap-l10n.desktop $DIR/data/
-          cp data/icons/se.danielnylander.snap-l10n.svg $DIR/data/icons/
-          cp data/man/snap-l10n.1 $DIR/data/man/
-          cp LICENSE $DIR/
-          test -f po/sv/LC_MESSAGES/snap-l10n.mo && { mkdir -p $DIR/po/sv/LC_MESSAGES; cp po/sv/LC_MESSAGES/snap-l10n.mo $DIR/po/sv/LC_MESSAGES/; } || true
+          mkdir -p $DIR
+          cp -r src/ data/ LICENSE README.md pyproject.toml $DIR/ 2>/dev/null || true
           tar czf ~/rpmbuild/SOURCES/$DIR.tar.gz $DIR
 
-      - name: Create spec file
+      - name: Create spec and build
         run: |
+          VERSION=${{ steps.version.outputs.version }}
           cat > ~/rpmbuild/SPECS/snap-l10n.spec << 'SPEC'
           Name:           snap-l10n
           Version:        VERSION_PLACEHOLDER
           Release:        1
-          Summary:        Snap Store translation status viewer
+          Summary:        
           License:        GPL-3.0-or-later
           URL:            https://github.com/yeager/snap-l10n
           Source0:        %{name}-%{version}.tar.gz
           BuildArch:      noarch
-          Requires:       python3 >= 3.9
-          Requires:       python3-gobject
-          Requires:       gtk4
-          Requires:       libadwaita
-          Requires:       python3-requests
+          Requires:       python3-gobject gtk4 libadwaita
 
           %description
-          A GTK4/Libadwaita application for viewing Snap Store translation progress.
+          GTK4/Libadwaita application.
 
           %prep
           %setup -q
 
           %install
-          mkdir -p %{buildroot}%{_datadir}/snap-l10n/snap_l10n
-          cp src/snap_l10n/*.py %{buildroot}%{_datadir}/snap-l10n/snap_l10n/
-          mkdir -p %{buildroot}%{_bindir}
-          cat > %{buildroot}%{_bindir}/snap-l10n << 'WRAPPER'
+          mkdir -p %{buildroot}/usr/share/snap-l10n/snap_l10n
+          cp src/snap_l10n/*.py %{buildroot}/usr/share/snap-l10n/snap_l10n/
+          if [ -d src/snap_l10n/locale ]; then
+            cp -r src/snap_l10n/locale %{buildroot}/usr/share/snap-l10n/snap_l10n/
+          fi
+
+          mkdir -p %{buildroot}/usr/bin
+          cat > %{buildroot}/usr/bin/snap-l10n << 'LAUNCHER'
           #!/bin/bash
           exec python3 -c "import sys; sys.path.insert(0, '/usr/share/snap-l10n'); from snap_l10n.main import main; main()" "$@"
-          WRAPPER
-          chmod 755 %{buildroot}%{_bindir}/snap-l10n
-          install -Dm644 data/se.danielnylander.snap-l10n.desktop %{buildroot}%{_datadir}/applications/se.danielnylander.snap-l10n.desktop
-          install -Dm644 data/icons/se.danielnylander.snap-l10n.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/se.danielnylander.snap-l10n.svg
-          install -Dm644 data/man/snap-l10n.1 %{buildroot}%{_mandir}/man1/snap-l10n.1
-          test -f po/sv/LC_MESSAGES/snap-l10n.mo && install -Dm644 po/sv/LC_MESSAGES/snap-l10n.mo %{buildroot}%{_datadir}/locale/sv/LC_MESSAGES/snap-l10n.mo || true
+          LAUNCHER
+          chmod 755 %{buildroot}/usr/bin/snap-l10n
+
+          mkdir -p %{buildroot}/usr/share/applications
+          cp data/*.desktop %{buildroot}/usr/share/applications/ 2>/dev/null || true
+
+          mkdir -p %{buildroot}/usr/share/icons/hicolor/scalable/apps
+          cp data/icons/*.svg %{buildroot}/usr/share/icons/hicolor/scalable/apps/ 2>/dev/null || true
 
           %files
           %license LICENSE
-          %{_bindir}/snap-l10n
-          %{_datadir}/snap-l10n/
-          %{_datadir}/applications/se.danielnylander.snap-l10n.desktop
-          %{_datadir}/icons/hicolor/scalable/apps/se.danielnylander.snap-l10n.svg
-          %{_mandir}/man1/snap-l10n.1*
-          %{_datadir}/locale/sv/LC_MESSAGES/snap-l10n.mo
-
-          %changelog
-          * $(date "+%a %b %d %Y") Daniel Nylander <daniel@danielnylander.se> - VERSION_PLACEHOLDER-1
-          - RPM package
+          %doc README.md
+          /usr/bin/snap-l10n
+          /usr/share/snap-l10n/
+          /usr/share/applications/*.desktop
+          /usr/share/icons/hicolor/scalable/apps/*.svg
           SPEC
-          sed -i "s/VERSION_PLACEHOLDER/${{ steps.version.outputs.version }}/g" ~/rpmbuild/SPECS/snap-l10n.spec
-
-      - name: Build RPM
-        run: rpmbuild -ba ~/rpmbuild/SPECS/snap-l10n.spec
+          sed -i "s/VERSION_PLACEHOLDER/$VERSION/g" ~/rpmbuild/SPECS/snap-l10n.spec
+          sed -i "s|\${repo}|snap-l10n|g; s|\${PYNAME}|snap_l10n|g" ~/rpmbuild/SPECS/snap-l10n.spec
+          rpmbuild -ba ~/rpmbuild/SPECS/snap-l10n.spec
 
       - name: Upload RPM to release
         if: github.event_name == 'release'
@@ -97,7 +88,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=${{ steps.version.outputs.version }}
-          TAG=${{ github.event.release.tag_name }}
-          gh release upload "$TAG" \
+          gh release upload "v$VERSION" \
             ~/rpmbuild/RPMS/noarch/snap-l10n-${VERSION}-1.noarch.rpm \
             --clobber
