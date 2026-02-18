@@ -1,5 +1,7 @@
 # Snap Translation Status
 
+[![Version](https://img.shields.io/badge/version-0.2.8-blue)](https://github.com/yeager/snap-l10n/releases)
+
 ## Screenshot
 
 ![Snap L10n](screenshots/main.png)
