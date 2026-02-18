@@ -614,7 +614,7 @@ class SnapL10nApp(Adw.Application):
             issue_url="https://github.com/yeager/snap-l10n/issues",
             translate_url="https://app.transifex.com/danielnylander/snap-l10n/",
             comments=_("A localization tool by Daniel Nylander"),
-            translator_credits=_("Translate this app: https://app.transifex.com/danielnylander/snap-l10n/"),
+            translator_credits=_("Translate this app: https://www.transifex.com/danielnylander/snap-l10n/"),
         )
         about.set_debug_info(_get_system_info())
         about.set_debug_info_filename("snap-l10n-debug.txt")
