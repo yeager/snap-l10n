@@ -37,7 +37,7 @@ jobs:
           Name:           snap-l10n
           Version:        VERSION_PLACEHOLDER
           Release:        1
-          Summary:        
+          Summary:        Snap package translation status viewer
           License:        GPL-3.0-or-later
           URL:            https://github.com/yeager/snap-l10n
           Source0:        %{name}-%{version}.tar.gz
