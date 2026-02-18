@@ -465,7 +465,10 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         if idx == 0:
             self._current_language = None
         else:
-            self._current_language = self._all_languages[idx - 1]
+            if idx - 1 < len(self._all_languages):
+                self._current_language = self._all_languages[idx - 1]
+            else:
+                self._current_language = None
         self._populate()
 
     def _on_notif_toggled(self, btn):
