@@ -139,7 +139,7 @@ msgstr "Avbryt"
 #: src/snap_l10n/main.py:546
 #, python-brace-format
 msgid "{total} snaps · {translated} translated · {filter} · {lang} · {ts}"
-msgstr ""
+msgstr "{total} snappar · {translated} översatta · {filter} · {lang} · {ts}"
 
 #: src/snap_l10n/main.py:616
 msgid "A localization tool by Daniel Nylander"
