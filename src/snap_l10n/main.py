@@ -33,7 +33,6 @@ gettext.bindtextdomain(GETTEXT_DOMAIN, "/usr/share/locale")
 gettext.textdomain(GETTEXT_DOMAIN)
 _ = gettext.gettext
 
-
 def _setup_heatmap_css():
     css = b"""
     .heatmap-green { background-color: #26a269; color: white; border-radius: 8px; }
@@ -46,11 +45,8 @@ def _setup_heatmap_css():
     Gtk.StyleContext.add_provider_for_display(
         Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-
 _SNAP_STATUS_CSS = {"full": "heatmap-green", "partial": "heatmap-yellow", "none": "heatmap-red"}
 _SNAP_STATUS_PCT = {"full": "100%", "partial": "~50%", "none": "0%"}
-
-
 
 import json as _json
 import platform as _platform
@@ -59,10 +55,8 @@ from snap_l10n.accessibility import AccessibilityManager
 
 _NOTIFY_APP = "snap-l10n"
 
-
 def _notify_config_path():
     return _Path(GLib.get_user_config_dir()) / _NOTIFY_APP / "notifications.json"
-
 
 def _load_notify_config():
     try:
@@ -70,12 +64,10 @@ def _load_notify_config():
     except Exception:
         return {"enabled": False}
 
-
 def _save_notify_config(config):
     p = _notify_config_path()
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(_json.dumps(config))
-
 
 def _send_notification(summary, body="", icon="dialog-information"):
     if HAS_NOTIFY and _load_notify_config().get("enabled"):
@@ -84,7 +76,6 @@ def _send_notification(summary, body="", icon="dialog-information"):
             n.show()
         except Exception:
             pass
-
 
 def _get_system_info():
     return "\n".join([
@@ -95,8 +86,6 @@ def _get_system_info():
         f"Python: {_platform.python_version()}",
         f"OS: {_platform.system()} {_platform.release()} ({_platform.machine()})",
     ])
-
-
 
 def _wlc_settings_path():
     import os
@@ -210,7 +199,6 @@ class SnapRow(Gtk.ListBoxRow):
     def _on_store_clicked(self, _btn):
         url = f"https://snapcraft.io/{self.info['name']}"
         Gio.AppInfo.launch_default_for_uri(url, None)
-
 
 class SnapL10nWindow(Adw.ApplicationWindow):
     """Main application window."""
@@ -513,7 +501,6 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         if not self._wlc_settings.get("welcome_shown"):
             self._show_welcome(self.props.active_window or self)
 
-
     def _on_export_format_chosen(self, dialog, response):
         if response not in ("csv", "json"):
             return
@@ -549,8 +536,6 @@ class SnapL10nWindow(Adw.ApplicationWindow):
         self._status_page.set_description("")
         GLib.idle_add(self._load_snaps)
 
-
-
     def _on_theme_toggle(self, _btn):
         sm = Adw.StyleManager.get_default()
         if sm.get_color_scheme() == Adw.ColorScheme.FORCE_DARK:
@@ -576,7 +561,6 @@ class SnapL10nWindow(Adw.ApplicationWindow):
             _("{total} snaps · {translated} translated · {filter} · {lang} · {ts}").format(
                 total=total, translated=translated, filter=filter_text, lang=lang_text, ts=ts)
         )
-
 
 class SnapL10nApp(Adw.Application):
     """Main application class."""
@@ -642,19 +626,18 @@ class SnapL10nApp(Adw.Application):
             license_type=Gtk.License.GPL_3_0,
             website="https://github.com/yeager/snap-l10n",
             issue_url="https://github.com/yeager/snap-l10n/issues",
-            translate_url="https://app.transifex.com/danielnylander/snap-l10n/",
             comments=_("A localization tool by Daniel Nylander"),
             translator_credits=_("Translate this app: https://www.transifex.com/danielnylander/snap-l10n/"),
         )
         about.set_debug_info(_get_system_info())
         about.set_debug_info_filename("snap-l10n-debug.txt")
-        about.present(self.props.active_window)
+        about.add_link(_("Help translate"), "https://app.transifex.com/danielnylander/snap-l10n/")
 
+        about.present(self.props.active_window)
 
 def main():
     app = SnapL10nApp()
     return app.run(sys.argv)
-
 
 if __name__ == "__main__":
     sys.exit(main())
@@ -688,8 +671,6 @@ if __name__ == "__main__":
         _save_wlc_settings(self._wlc_settings)
         dialog.close()
 
-
-
 # --- Session restore ---
 import json as _json
 import os as _os
@@ -716,7 +697,6 @@ def _restore_session(window, app_name):
     except (FileNotFoundError, _json.JSONDecodeError, OSError):
         pass
 
-
 # --- Fullscreen toggle (F11) ---
 def _setup_fullscreen(window, app):
     """Add F11 fullscreen toggle."""
@@ -728,7 +708,6 @@ def _setup_fullscreen(window, app):
         ))
         app.add_action(action)
         app.set_accels_for_action('app.toggle-fullscreen', ['F11'])
-
 
 # --- Plugin system ---
 import importlib.util
