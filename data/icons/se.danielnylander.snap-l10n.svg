@@ -1,23 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#e95420"/>
-      <stop offset="100%" stop-color="#b33d18"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e95420"/>
+      <stop offset="1" stop-color="#c74113"/>
     </linearGradient>
   </defs>
-  <rect width="128" height="128" rx="20" fill="url(#bg)"/>
-  <!-- Snap package icon -->
-  <rect x="32" y="24" width="64" height="64" rx="12" fill="white" opacity="0.92"/>
-  <rect x="42" y="34" width="44" height="44" rx="6" fill="#e95420" opacity="0.15"/>
-  <!-- Snap "S" -->
-  <path d="M52,48 Q52,40 60,40 L68,40 Q76,40 76,48 Q76,56 68,56 L60,56 Q52,56 52,64 Q52,72 60,72 L68,72 Q76,72 76,64" 
-        fill="none" stroke="#e95420" stroke-width="4" stroke-linecap="round"/>
-  <!-- Translation globe overlay -->
-  <circle cx="96" cy="88" r="20" fill="#1c71d8" opacity="0.9"/>
-  <circle cx="96" cy="88" r="14" fill="none" stroke="white" stroke-width="1.5" opacity="0.8"/>
-  <ellipse cx="96" cy="88" rx="6" ry="14" fill="none" stroke="white" stroke-width="1" opacity="0.6"/>
-  <line x1="82" y1="88" x2="110" y2="88" stroke="white" stroke-width="1" opacity="0.6"/>
-  <!-- Progress hint -->
-  <rect x="20" y="108" width="56" height="6" rx="3" fill="white" opacity="0.25"/>
-  <rect x="20" y="108" width="40" height="6" rx="3" fill="#57e389" opacity="0.8"/>
+  <rect width="128" height="128" rx="16" fill="url(#bg)"/>
+  <circle cx="64" cy="48" r="24" fill="white" opacity="0.9"/><path d="M64 28 L64 48 L82 48" stroke="#c74113" stroke-width="4" fill="none" stroke-linecap="round"/><text x="64" y="82" font-size="12" text-anchor="middle" fill="white" font-weight="bold">SNAP</text>
 </svg>
