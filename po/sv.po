@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the snap-l10n package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: snap-l10n\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-22 06:25+0100\n"
+"POT-Creation-Date: 2026-02-22 17:04+0100\n"
 "PO-Revision-Date: 2026-02-14 09:50+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
 "Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304768/sv/)\n"
@@ -21,145 +21,145 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/snap_l10n/main.py:156
+#: src/snap_l10n/main.py:157
 #, python-brace-format
 msgid "Version: {version} · Publisher: {publisher}"
 msgstr "Version: {version} · Utgivare: {publisher}"
 
-#: src/snap_l10n/main.py:158
+#: src/snap_l10n/main.py:159
 msgid "unknown"
 msgstr "okänt"
 
-#: src/snap_l10n/main.py:167
+#: src/snap_l10n/main.py:168
 #, python-brace-format
 msgid "Languages: {langs}"
 msgstr "Språk: {langs}"
 
-#: src/snap_l10n/main.py:169
+#: src/snap_l10n/main.py:170
 msgid "No translations found"
 msgstr "Inga översättningar hittades"
 
-#: src/snap_l10n/main.py:180
+#: src/snap_l10n/main.py:181
 #, python-brace-format
 msgid "Desktop file translated: {langs}"
 msgstr "Skrivbordsfil översatt: {langs}"
 
-#: src/snap_l10n/main.py:184
+#: src/snap_l10n/main.py:185
 msgid "Desktop file: not translated"
 msgstr "Skrivbordsfil: inte översatt"
 
-#: src/snap_l10n/main.py:191
+#: src/snap_l10n/main.py:192
 msgid "Fully translated"
 msgstr "Helt översatt"
 
-#: src/snap_l10n/main.py:192 src/snap_l10n/main.py:247
-#: src/snap_l10n/main.py:569
+#: src/snap_l10n/main.py:193 src/snap_l10n/main.py:248
+#: src/snap_l10n/main.py:570
 msgid "Partially translated"
 msgstr "Delvis översatt"
 
-#: src/snap_l10n/main.py:193 src/snap_l10n/main.py:246
-#: src/snap_l10n/main.py:568
+#: src/snap_l10n/main.py:194 src/snap_l10n/main.py:247
+#: src/snap_l10n/main.py:569
 msgid "No translations"
 msgstr "Inga översättningar"
 
-#: src/snap_l10n/main.py:205
+#: src/snap_l10n/main.py:206
 msgid "Open in Snap Store"
 msgstr "Öppna i Snap Store"
 
-#: src/snap_l10n/main.py:223 src/snap_l10n/main.py:635
+#: src/snap_l10n/main.py:224 src/snap_l10n/main.py:636
 msgid "Snap Translation Status"
 msgstr "Översättningsstatus för snap"
 
-#: src/snap_l10n/main.py:245 src/snap_l10n/main.py:567
+#: src/snap_l10n/main.py:246 src/snap_l10n/main.py:568
 msgid "All snaps"
 msgstr "Alla snappar"
 
-#: src/snap_l10n/main.py:254 src/snap_l10n/main.py:379
-#: src/snap_l10n/main.py:572
+#: src/snap_l10n/main.py:255 src/snap_l10n/main.py:380
+#: src/snap_l10n/main.py:573
 msgid "All languages"
 msgstr "Alla språk"
 
-#: src/snap_l10n/main.py:256
+#: src/snap_l10n/main.py:257
 msgid "Filter by language"
 msgstr "Filtrera efter språk"
 
-#: src/snap_l10n/main.py:262
+#: src/snap_l10n/main.py:263
 msgid "Toggle heatmap view"
 msgstr "Växla värmekarta"
 
-#: src/snap_l10n/main.py:269
+#: src/snap_l10n/main.py:270
 msgid "Toggle notifications"
 msgstr "Växla aviseringar"
 
-#: src/snap_l10n/main.py:275
+#: src/snap_l10n/main.py:276
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: src/snap_l10n/main.py:281
+#: src/snap_l10n/main.py:282
 msgid "Export data"
 msgstr "Exportera data"
 
-#: src/snap_l10n/main.py:296 src/snap_l10n/main.py:546
+#: src/snap_l10n/main.py:297 src/snap_l10n/main.py:547
 msgid "Loading…"
 msgstr "Läser in…"
 
-#: src/snap_l10n/main.py:351
+#: src/snap_l10n/main.py:352
 msgid "Error"
 msgstr "Fel"
 
-#: src/snap_l10n/main.py:361
+#: src/snap_l10n/main.py:362
 msgid "Snap L10n: Untranslated snaps"
 msgstr "Snap L10n: Icke-översatta snappar"
 
-#: src/snap_l10n/main.py:362
+#: src/snap_l10n/main.py:363
 #, python-brace-format
 msgid "{count} snaps have no translations"
 msgstr "{count} snappar har inga översättningar"
 
-#: src/snap_l10n/main.py:462
+#: src/snap_l10n/main.py:463
 msgid "No snaps found"
 msgstr "Inga snappar hittades"
 
-#: src/snap_l10n/main.py:464
+#: src/snap_l10n/main.py:465
 msgid "No snaps match the current filter."
 msgstr "Inga snappar matchade aktuella filtret."
 
-#: src/snap_l10n/main.py:502
+#: src/snap_l10n/main.py:503
 msgid "Export Data"
 msgstr "Exportera data"
 
-#: src/snap_l10n/main.py:503
+#: src/snap_l10n/main.py:504
 msgid "Choose export format:"
 msgstr "Välj exportformat:"
 
-#: src/snap_l10n/main.py:504
+#: src/snap_l10n/main.py:505
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/snap_l10n/main.py:575
+#: src/snap_l10n/main.py:576
 #, python-brace-format
 msgid "{total} snaps · {translated} translated · {filter} · {lang} · {ts}"
 msgstr "{total} snappar · {translated} översatta · {filter} · {lang} · {ts}"
 
-#: src/snap_l10n/main.py:645
+#: src/snap_l10n/main.py:646
 msgid "A localization tool by Daniel Nylander"
 msgstr "Ett lokaliseringsverktyg av Daniel Nylander"
 
-#: src/snap_l10n/main.py:646
+#: src/snap_l10n/main.py:647
 msgid ""
 "Translate this app: https://www.transifex.com/danielnylander/snap-l10n/"
 msgstr ""
 "Översätt denna app: https://www.transifex.com/danielnylander/snap-l10n/"
 
-#: src/snap_l10n/main.py:663
+#: src/snap_l10n/main.py:664
 msgid "Welcome"
 msgstr "Välkommen"
 
-#: src/snap_l10n/main.py:668
+#: src/snap_l10n/main.py:669
 msgid "Welcome to Snap L10n"
 msgstr "Välkommen till Snap L10n"
 
-#: src/snap_l10n/main.py:669
+#: src/snap_l10n/main.py:670
 msgid ""
 "Track snap package translation status.\n"
 "\n"
@@ -171,6 +171,6 @@ msgstr ""
 "✓ Visa översättningsomfattning per snap\n"
 "✓ Filtrera efter utgivare och språk"
 
-#: src/snap_l10n/main.py:670
+#: src/snap_l10n/main.py:671
 msgid "Get Started"
 msgstr "Kom igång"
