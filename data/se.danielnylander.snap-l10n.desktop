@@ -6,5 +6,6 @@ Exec=snap-l10n
 Icon=se.danielnylander.snap-l10n
 Terminal=false
 Type=Application
+StartupWMClass=se.danielnylander.snap-l10n
 Categories=Development;GTK;
 Keywords=snap;translation;l10n;localization;

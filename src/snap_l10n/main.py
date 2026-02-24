@@ -568,6 +568,7 @@ class SnapL10nApp(Adw.Application):
     def __init__(self):
         super().__init__(
             application_id=APPID,
+        GLib.set_application_name(_("Snap Translation Status"))
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
         if HAS_NOTIFY:
